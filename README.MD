@@ -13,3 +13,4 @@ install package hddtemp:</br>
 **How to run it**</br>
 `crontab -e`</br>
 `* * * * * python /path_to_script/script.py`</br>
+
