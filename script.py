@@ -35,5 +35,6 @@ for i in list_hdds:
     temps[i] = text
 home = getenv("HOME")
 with open(path.join(home,'temp.json'), 'a') as json_file:
-    dump(temps, json_file)    
+    dump(temps, json_file)   
+    json_file.write('\n') 
     
