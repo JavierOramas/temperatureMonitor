@@ -1,6 +1,8 @@
 import psutil
 from os import popen
 from json import dump
+from os import getenv
+from os import path
 import datetime
 # def get_cpu_temps():
 temps = {}
@@ -31,6 +33,7 @@ for i in list_hdds:
         text = text.split(': ')[-1].replace('\u00b0C\n', '')
 
     temps[i] = text
-    
-with open('temp.json', 'a') as json_file:
+home = getenv("HOME")
+with open(path.join(home,'temp.json'), 'a') as json_file:
     dump(temps, json_file)    
+    
