@@ -27,6 +27,9 @@ for i in list_hdds:
     text = str(popen('hddtemp /dev/'+i).read())
     if text == '':
         text = 'sleeping'
+    else:
+        text = text.split(': ')[-1].replace('\u00b0C\n', '')
+
     temps[i] = text
     
 with open('temp.json', 'a') as json_file:
