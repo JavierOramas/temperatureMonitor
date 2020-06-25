@@ -17,6 +17,6 @@ add the following line to the sudoers file (`sudo visudo`)
 `crontab -e`</br>
 `* * * * * python /path_to_folder/script.py`</br>
 
-**Web Interface**
-set the following command to run at startup and set the port of your preference
+**Web Interface**</br>
+set the following command to run at startup and set the port of your preference</br>
 `streamlit run /path_to_folder/webui.py --server.port {port}`
