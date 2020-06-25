@@ -5,7 +5,7 @@ outputs the info to temps.json</br>
 `pip install -r requirements.txt`
 (if needed use pip3)</br>
 install package hddtemp:</br>
-<Arch Linux></br>
+<ArchLinux></br>
 `sudo pacman -S hddtemp`</br>
 <Ubuntu/Debian></br>
 `sudo apt-get install hddtemp`</br>
