@@ -24,7 +24,10 @@ for i in hdds:
     if i[5] == 'disk':
         list_hdds.append(i[0])
 for i in list_hdds:
-    temps[i] = str(popen('hddtemp '+i))
+    text = str(popen('hddtemp /dev/'+i).read())
+    if text == '':
+        text = 'sleeping'
+    temps[i] = text
     
 with open('temp.json', 'a') as json_file:
     dump(temps, json_file)    
