@@ -1,4 +1,4 @@
-simple scritp to monitor cpu and hdd temperatures
+simple scritp to monitor cpu and hdd temperatures in lunix
 outputs the info to temps.json
 
 **Installation**
