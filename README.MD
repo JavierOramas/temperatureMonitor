@@ -10,7 +10,13 @@ install package hddtemp:</br>
 *Ubuntu/Debian*</br>
 `sudo apt-get install hddtemp`</br>
 
+add the following line to the sudoers file (`sudo visudo`)
+`{USER} ALL= NOPASSWD: /usr/bin/hddtemp`
+
 **How to run it**</br>
 `crontab -e`</br>
-`* * * * * python /path_to_script/script.py`</br>
+`* * * * * python /path_to_folder/script.py`</br>
 
+**Web Interface**
+set the following command to run at startup and set the port of your preference
+`streamlit run /path_to_folder/webui.py --server.port {port}`
