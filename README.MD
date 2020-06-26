@@ -15,7 +15,8 @@ add the following line to the sudoers file (`sudo visudo`)
 
 **How to run it**</br>
 `crontab -e`</br>
-`* * * * * python /path_to_folder/script.py`</br>
+`10 * * * * python /path_to_folder/script.py`</br> 
+(change crontab setting to modify run frequency)</br>
 
 **Web Interface**</br>
 set the following command to run at startup and set the port of your preference</br>
