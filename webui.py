@@ -8,11 +8,17 @@ from utils import list_disks
 df = pandas.read_json(path.join('data/temp.json'), lines=True)
 
 if st.checkbox('show all data'):
-    old = pandas.read_json(path.join('data/history.json'), lines=True)
-    df = pandas.concat([old,df])
+    try:
+        old = pandas.read_json(path.join('data/history.json'), lines=True)
+        df = pandas.concat([old,df])
+    except:
+        pass
     df = df.reset_index(drop=True)
 if st.button(label='Obtener valores actuales'):
     system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py'))
+
+if st.button(label='Eliminar datos antiguos'):
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py 100'))
 
 
 df['cpu'] = df['Package id 0']
