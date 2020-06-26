@@ -1,12 +1,15 @@
 import streamlit as st
 import pandas
 import psutil
-from os import getenv,path
+from os import getenv,path,system
 from utils import list_disks
 
 df = pandas.read_json(path.join('data/temp.json'), lines=True)
 
-st.text('CPU Temp')
+if st.button(label='Obtener valores actuales'):
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py'))
+
+
 df['cpu'] = df['Package id 0']
 st.line_chart(df['cpu'], )
 
