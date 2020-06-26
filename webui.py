@@ -4,8 +4,13 @@ import psutil
 from os import getenv,path,system
 from utils import list_disks
 
+
 df = pandas.read_json(path.join('data/temp.json'), lines=True)
 
+if st.checkbox('show all data'):
+    old = pandas.read_json(path.join('data/history.json'), lines=True)
+    df = pandas.concat([old,df])
+    df = df.reset_index(drop=True)
 if st.button(label='Obtener valores actuales'):
     system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py'))
 
