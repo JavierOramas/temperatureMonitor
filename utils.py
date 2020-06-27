@@ -1,4 +1,7 @@
 from os import popen
+import pandas as pd
+import datetime
+import time
 
 def list_disks():
     hdds = []
@@ -26,3 +29,10 @@ def clean_digits(string):
         except:
             continue
     return output
+
+def filter_date(df, start, end): 
+    elems = []
+    for i in df['date']:
+        elems.append(start <= datetime.datetime.strptime(str(i),'%Y-%m-%d 00:00:00').date() <= end)
+        df.reset_index()
+    return df[elems]  
