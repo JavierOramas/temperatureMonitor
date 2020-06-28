@@ -1,5 +1,7 @@
-simple scritp to monitor cpu and hdd temperatures</br>
+Simple scritp to monitor cpu and hdd temperatures</br>
+Currently does not have support for multi CPU systems</br>
 outputs the info to temps.json</br>
+
 
 **Installation**</br>
 `pip install -r requirements.txt`
