@@ -5,7 +5,7 @@ from datetime import datetime
 from os import getenv,path,system
 from utils import list_disks,filter_date
 
-
+st.title('Monitor de Temperatura')
 df = pandas.read_json(path.join('data/temp.json'), lines=True)
 
 if st.sidebar.checkbox('Filtrar por fecha'):
