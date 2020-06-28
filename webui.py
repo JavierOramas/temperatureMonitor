@@ -7,6 +7,7 @@ from utils import list_disks,filter_date
 
 st.title('Monitor de Temperatura')
 df = pandas.read_json(path.join('data/temp.json'), lines=True)
+df['cpu'] = df['Package id 0']
 
 if st.sidebar.checkbox('Filtrar por fecha'):
     start = st.date_input(label='start')
@@ -28,7 +29,6 @@ if st.button(label='Eliminar datos antiguos'):
     system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py 100'))
 
 if st.sidebar.checkbox('Mostrar datos de la CPU'):
-    df['cpu'] = df['Package id 0']
     st.line_chart(df['cpu'], )
 
 cores = []
