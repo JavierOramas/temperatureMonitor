@@ -10,6 +10,9 @@ def clean(items_left=100):
     df = pd.read_json(path.join(path.dirname(path.abspath(__file__)),'data/temp.json'), lines=True, convert_dates=False, dtype=float)
 
     # df['date'] = [i for i in df['date']]
+    if (len(df) < 100):
+        return
+    
     ndf = pd.DataFrame(df.tail(items_left))
     df = df[:-items_left]    
 
@@ -27,6 +30,6 @@ def clean(items_left=100):
                 if not i[-1] == '\n':
                     json_file.write('\n')
 
-        os.remove(path.join(path.dirname(path.abspath(__file__)),'data/temporal.json')
+        remove(path.join(path.dirname(path.abspath(__file__)),'data/temporal.json'))
 if __name__ == '__main__':
     clean(int(sys.argv[1]))
