@@ -6,7 +6,7 @@ from utils import list_disks,clean_digits
 import string
 # def get_cpu_temps():
 temps = {}
-temps['date'] = str(datetime.datetime.now().strftime('%Y-%m-%d'))
+temps['date'] = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 for i in psutil.sensors_temperatures()['coretemp']:
     temps[i[0]] = i[1]
