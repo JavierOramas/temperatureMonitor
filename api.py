@@ -2,6 +2,7 @@ from flask import Flask
 import pandas as pd
 from os import path
 from utils import list_disks
+import socket
 import psutil
 app = Flask(__name__)
 
@@ -22,6 +23,7 @@ def get_history():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=9998)
+    print(socket.gethostbyname(socket.gethostname()))
+    app.run(host=socket.gethostbyname(socket.gethostname()), port=9998)
     #change host and port to the values you find convenient
     
