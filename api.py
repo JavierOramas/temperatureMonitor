@@ -1,6 +1,6 @@
 from flask import Flask
 import pandas as pd
-from os import path, popen
+from os import path, popen, system
 from utils import list_disks
 import socket
 import psutil
@@ -21,9 +21,19 @@ def get_history():
     json_file['disks_name'] = list_disks()
     return json_file
 
+@app.route('/measure')
+def measure():
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py'))
+    return "OK"
+    
+@app.route('/clean')
+def clean():
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py'))
+    return "OK"
+    
 
 if __name__ == '__main__':
-    ipv4 = popen('ip addr show enp0s31f6').read().split("inet ")[1].split("/")[0]
+    ipv4 = popen('ip addr show wlo1').read().split("inet ")[1].split("/")[0]
     app.run(host=ipv4, port=9998)
     #change host and port to the values you find convenient
     
