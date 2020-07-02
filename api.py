@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/temps')
 def get_temps():
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py'))
     json_file = pd.read_json(path.join(path.dirname(path.abspath(__file__)),'data/temp.json'), lines=True, convert_dates=False, dtype=float).to_dict(orient='dict')
     json_file['n_cores'] = len(psutil.sensors_temperatures()['coretemp'])-2
     json_file['disks_name'] = list_disks()
