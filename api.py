@@ -2,7 +2,6 @@ from flask import Flask
 import pandas as pd
 from os import path, popen, system
 from utils import list_disks
-import socket
 import psutil
 app = Flask(__name__)
 
