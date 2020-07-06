@@ -28,12 +28,13 @@ def measure():
     
 @app.route('/clean')
 def clean():
-    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py'))
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py 100'))
     return "OK"
     
 
 if __name__ == '__main__':
     ipv4 = popen('ip addr show wlo1').read().split("inet ")[1].split("/")[0]
+    #change wlo1 to your network adapter's name
     app.run(host=ipv4, port=9998)
     #change host and port to the values you find convenient
     
