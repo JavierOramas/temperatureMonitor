@@ -28,7 +28,7 @@ def measure():
     
 @app.route('/clean')
 def clean():
-    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py 100'))
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py')+' 100')
     return "OK"
     
 
