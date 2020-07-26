@@ -23,7 +23,8 @@ def get_history():
 
 @app.route('/measure')
 def measure():
-    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py'))
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py get_temperatures'))
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py get_cpu_load'))
     return "OK"
     
 @app.route('/clean')

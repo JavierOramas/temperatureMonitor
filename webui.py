@@ -5,7 +5,7 @@ from datetime import datetime
 from os import getenv,path,system
 from utils import list_disks,filter_date
 
-system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py'))
+system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py get_temperatures'))
 st.title('Monitor de Temperatura')
 df = pandas.read_json(path.join('data/temp.json'), lines=True)
 df['cpu'] = df['Package id 0']
@@ -24,7 +24,7 @@ if st.sidebar.checkbox('show all data'):
         pass
     df = df.reset_index(drop=True)
 if st.button(label='Obtener valores actuales'):
-    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py'))
+    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py get_temperatures'))
 
 if st.button(label='Eliminar datos antiguos'):
     system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py 100'))
