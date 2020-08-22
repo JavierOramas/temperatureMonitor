@@ -5,6 +5,11 @@ from utils import list_disks
 import psutil
 app = Flask(__name__)
 
+#TODO make a god home Page
+@app.route('/')
+def root():
+    return 'temp_monitor_api'
+
 @app.route('/temps')
 def get_temps():
     system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py'))
