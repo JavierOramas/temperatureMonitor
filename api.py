@@ -45,4 +45,4 @@ if __name__ == '__main__':
         app.run(host=ipv4, port=9998)
         #change host and port to the values you find convenient
     except:
-        print("The network interface is not detected or not connected, \n please check network connection or chanche interface name in api.py" )
+        print("The network interface is not detected or not connected, \n please check network connection or changhe interface name in api.py" )
