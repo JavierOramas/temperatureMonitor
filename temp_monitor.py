@@ -10,6 +10,7 @@ st.title('Monitor de Temperatura')
 df = pandas.read_json(path.join('data/temp.json'), lines=True)
 df['cpu'] = df['Package id 0']
 
+
 if st.sidebar.checkbox('Filtrar por fecha'):
     start = st.date_input(label='start')
     end = st.date_input(label='end')
@@ -59,5 +60,4 @@ if st.sidebar.checkbox('Mostrar datos de los discos'):
 if st.sidebar.checkbox("Show raw Data (disks)"):
     for i in disks:
         df[i]
-
 #    date_day = st.sidebar.date_input("fecha",datetime.datetime.now(), key="daydate")
