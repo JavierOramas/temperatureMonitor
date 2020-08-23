@@ -40,9 +40,12 @@ def clean():
 
 if __name__ == '__main__':
     try:
-        ipv4 = popen('ip addr show wlo1').read().split("inet ")[1].split("/")[0]
         #change wlo1 to your network adapter's name
-        app.run(host=ipv4, port=9998)
+        try:
+            ipv4 = popen('ip addr show wlo1').read().split("inet ")[1].split("/")[0]
+            app.run(host=ipv4, port=9998)
+        except:
+            app.run(port=9998)
         #change host and port to the values you find convenient
     except:
         print("The network interface is not detected or not connected, \n please check network connection or changhe interface name in api.py" )
