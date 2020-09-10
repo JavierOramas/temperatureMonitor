@@ -44,7 +44,7 @@ def get_temperatures():
     # print(temps)
     export_json(temps, 'temps')
 
-@app.command(name='get_usage', help='generate or add to a json the actual cpu usage percent')
+@app.command(name='get_cpu_usage', help='generate or add to a json the actual cpu usage percent')
 def get_cpu_load():
     usage = {}
     usage['date'] = get_date()
@@ -52,10 +52,15 @@ def get_cpu_load():
     # usage['stats'] = psutil.cpu_times()
     export_json(usage, 'cpu_usage')
 
+@app.command(name='get_memory_usage', help='generate or add to a json the actual memory usage and memory usage percent')
 def get_memory_usage():
     memory = {}
     memory['date'] = get_date()
     memory['swap'] = psutil.swap_memory()
+    memory['phisical'] = (psutil.virtual_memory().total - psutil.virtual_memory().available) / 1000000000
+    memory['precentage'] = (memory['phisical'] / ( psutil.virtual_memory().total / 1000000000 ) ) * 100
+
+    export_json(memory, 'memory_usage')
     
 
 if __name__ == "__main__":
