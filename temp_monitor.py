@@ -7,7 +7,7 @@ from utils import list_disks,filter_date
 
 system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py get_temperatures'))
 st.title('Monitor de Temperatura')
-df = pandas.read_json(path.join('data/temp.json'), lines=True)
+df = pandas.read_json(path.join('data/temps.json'), lines=True)
 df['cpu'] = df['Package id 0']
 
 

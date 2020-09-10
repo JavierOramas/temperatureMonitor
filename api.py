@@ -42,7 +42,7 @@ if __name__ == '__main__':
     try:
         #change wlo1 to your network adapter's name
         try:
-            ipv4 = popen('ip addr show wlo1').read().split("inet ")[1].split("/")[0]
+            ipv4 = popen('ip addr show lo').read().split("inet ")[1].split("/")[0]
             app.run(host=ipv4, port=9998)
         except:
             app.run(port=9998)

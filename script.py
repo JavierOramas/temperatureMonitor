@@ -13,6 +13,7 @@ def get_date():
 
 def export_json(file, name):
     home = getenv("HOME")
+    print()
     with open(path.join(path.dirname(path.abspath(__file__)),'data/'+name+'.json'), 'a') as json_file:
         dump(file, json_file)   
         json_file.write('\n') 
@@ -29,17 +30,21 @@ def get_temperatures():
     list_hdds = list_disks()
 
     for i in list_hdds:
-        text = str(popen('sudo hddtemp /dev/'+i).read())
-        if text == '':
-            text = 0.0
-        else:
-            text = text.split(': ')[-1].replace('\u00b0C\n', '')
-            text = float(clean_digits(text))
-        temps[i] = text
-
+        try:
+            text = str(popen('sudo hddtemp /dev/'+i).read())
+            
+            if text == '' or 'ERROR' in text:
+                text = 0.0
+            else:
+                text = text.split(': ')[-1].replace('\u00b0C\n', '')
+                text = float(clean_digits(text))
+            temps[i] = text
+        except:
+            pass
+    # print(temps)
     export_json(temps, 'temps')
 
-@app.command(name='get_temperatures', help='generate or add to a json the actual cpu usage percent')
+@app.command(name='get_usage', help='generate or add to a json the actual cpu usage percent')
 def get_cpu_load():
     usage = {}
     usage['date'] = get_date()
