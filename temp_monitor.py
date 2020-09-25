@@ -4,8 +4,10 @@ import psutil
 from datetime import datetime
 from os import getenv,path,system
 from utils import list_disks,filter_date
+from script import get_temperatures
+from clean import clean
 
-system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py get_temperatures'))
+get_temperatures()
 st.title('Monitor de Temperatura')
 df = pandas.read_json(path.join('data/temps.json'), lines=True)
 df['cpu'] = df['Package id 0']
@@ -25,10 +27,12 @@ if st.sidebar.checkbox('show all data'):
         pass
     df = df.reset_index(drop=True)
 if st.button(label='Obtener valores actuales'):
-    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py get_temperatures'))
+    get_temperatures()
+    # system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'script.py get_temperatures'))
 
 if st.button(label='Eliminar datos antiguos'):
-    system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py 100'))
+    clean(100)
+    # system('python3 '+ path.join(path.dirname(path.abspath(__file__)),'clean.py 100'))
 
 if st.sidebar.checkbox('Mostrar datos de la CPU'):
     st.line_chart(df['cpu'], )
