@@ -36,13 +36,14 @@ def install_api():
 def install_api():
     
     unit = '''[Unit]\nDescription=Temp Monitor webapp\nAfter=network.target\n'''
-    service = '''\n[Service]\nUser={user}\nWorkingDirectory={dir}\nExecStart={streamlit} run temp_monitor.py --server.port 9999\nRestart=always\n'''
+    service = '''\n[Service]\nUser={user}\nWorkingDirectory={dir}\nExecStart={streamlit} run temp_monitor.py --server.port 9999 --browser.serverAddress {ip}\nRestart=always\n'''
     install = '''\n[Install]\nWantedBy=multi-user.target\n'''
     
     with open('/etc/systemd/system/temp_monitor_web.service', 'w') as file:
         service = service.replace('{user}', os.getlogin())
         service = service.replace('{dir}', os.path.dirname(os.path.abspath(__file__)))
         service = service.replace('{streamlit}', shutil.which('streamlit'))
+        service  = service.replace('{ip}', get_ip())
         string = unit + service + install 
         file.write(string)
 
