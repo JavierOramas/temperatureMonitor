@@ -23,6 +23,19 @@ add the following line to the sudoers file (`sudo visudo`)
 `10 * * * * python /path_to_folder/script.py`</br> 
 (change crontab setting to modify run frequency)</br>
 
+# Deploy to a Server
+to deploy to a server you have to run:
+`sudo python3 setup.py [ api|webui ]`
+`sudo systemctl daemon-reload`
+
+`sudo systemctl enable temp_monitor_api` or
+`sudo systemctl enable temp_monitor_web`
+
+`sudo systemctl start temp_monitor_api` or
+`sudo systemctl start temp_monitor_web`
+
+this will make the services start with the system
+
 # Web Interface
 set the following command to run at startup and set the port of your preference</br>
 `streamlit run /path_to_folder/webui.py --server.port {port}`</br>
