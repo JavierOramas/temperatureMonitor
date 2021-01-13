@@ -7,6 +7,7 @@ from os import getenv,path,system
 from utils import list_disks,filter_date
 from script import get_temperatures
 from clean import clean
+import time
 
 get_temperatures()
 st.title('Monitor de Temperatura')
@@ -68,3 +69,4 @@ if st.sidebar.checkbox("Show raw Data (disks)"):
     for i in disks:
         df[i]
 #    date_day = st.sidebar.date_input("fecha",datetime.datetime.now(), key="daydate")
+
